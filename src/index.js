@@ -4,13 +4,19 @@ const { ApolloServer } = require('apollo-server');
 const typeDefs = `
   type Query {
     info: String!
+    feed: [Links!]!
+  }
+  type Links {
+      id: ID!
+      subscription: String!
+      url: String!
   }
 `
 
 // Resolver
 const resolvers = {
   Query: {
-    info: () => `This is the API of a Hackernews Clone`
+    info: () => `This is Hacker News Clone API`
   }
 }
 
