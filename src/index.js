@@ -15,8 +15,8 @@ Query: {
 
 // Server
 const server = new ApolloServer({
-    typeDefs,
-    resolvers
+    typesDef,
+    resolvers,
 })
 
 server
