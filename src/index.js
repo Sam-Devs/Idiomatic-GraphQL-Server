@@ -6,6 +6,9 @@ const typeDefs = `
     info: String!
     feed: [Links!]!
   }
+  type Mutation {
+      post(description: Strings!, url: Strings!): Links!
+  }
   type Links {
       id: ID!
       description: String!
