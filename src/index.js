@@ -8,15 +8,28 @@ const typeDefs = `
   }
   type Links {
       id: ID!
-      subscription: String!
+      description: String!
       url: String!
   }
 `
+// Links Object
+let links = [{
+    id: "link-0",
+    description: "The first link",
+    url: "'www.howtographql.com"
+}]
 
 // Resolver
 const resolvers = {
   Query: {
-    info: () => `This is Hacker News Clone API`
+    info: () => `This is Hacker News Clone API`,
+    feed: () =>links
+  },
+
+  Links: {
+      id: (parent) => parent.id,
+      description: (parent) => parent.description,
+      url: (parent) => parent.url
   }
 }
 
