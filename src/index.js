@@ -1,26 +1,27 @@
-const { ApolloServer } = require("apollo-server");
+const { ApolloServer } = require('apollo-server');
 
 // Types
-const typesDef = `
-type Query {
+const typeDefs = `
+  type Query {
     info: String!
-}
+  }
 `
 
 // Resolver
 const resolvers = {
-Query: {
-    info: () => `This is an API of HackerNews Clone`
-}}
+  Query: {
+    info: () => `This is the API of a Hackernews Clone`
+  }
+}
 
 // Server
 const server = new ApolloServer({
-    typesDef,
-    resolvers,
+  typeDefs,
+  resolvers,
 })
 
 server
-.listen()
-.then(({url}) => {
-    console.log(`Server is running ${url}`);
-})
+  .listen()
+  .then(({ url }) =>
+    console.log(`Server is running on ${url}`)
+  );
