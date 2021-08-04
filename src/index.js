@@ -16,17 +16,26 @@ const resolvers = {
     feed: () =>links
   },
 
-  Links: {
-      id: (parent) => parent.id,
-      description: (parent) => parent.description,
-      url: (parent) => parent.url
-  }
+  Mutation: {
+      post: (parent, args) => {
+          let idCount = links.length;
+
+          const link = {
+              id: `link ${idCount++}`,
+              description: args.description,
+              url: args.url
+          }
+          links.push(link);
+          return link;
+      }
+  },
 }
 
 // Server
 const server = new ApolloServer({
   typeDefs: fs.readFileSync(
-      path.join(__dirname, "schema.graphql")
+      path.join(__dirname, "schema.graphql"),
+      "utf-8"
   ),
   resolvers,
 })
