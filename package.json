@@ -1,0 +1,12 @@
+{
+  "name": "Idiomatic-GraphQL-Server-",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Sam-Devs/Idiomatic-GraphQL-Server.git",
+  "author": "Sam Ayorinde <ayorinde2@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "apollo-server": "^3.1.2",
+    "graphql": "^15.5.1"
+  }
+}
