@@ -1,20 +1,7 @@
 const { ApolloServer } = require('apollo-server');
+const fs = require("fs")
+const path = require("path");
 
-// Types
-const typeDefs = `
-  type Query {
-    info: String!
-    feed: [Links!]!
-  }
-  type Mutation {
-      post(description: Strings!, url: Strings!): Links!
-  }
-  type Links {
-      id: ID!
-      description: String!
-      url: String!
-  }
-`
 // Links Object
 let links = [{
     id: "link-0",
@@ -38,7 +25,9 @@ const resolvers = {
 
 // Server
 const server = new ApolloServer({
-  typeDefs,
+  typeDefs: fs.readFileSync(
+      path.join(__dirname, "schema.graphql")
+  ),
   resolvers,
 })
 
