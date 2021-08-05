@@ -27,6 +27,17 @@ const resolvers = {
           }
           links.push(link);
           return link;
+      },
+
+      read: (parent, args) => {
+          let idCount = links.length;
+
+          const link = {
+              id: `link ${idCount}`,
+              description: parent.description,
+              url: parent.url
+          }
+          return link;
       }
   },
 }
