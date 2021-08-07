@@ -32,4 +32,15 @@ const login = async (parent, args, context) => {
   return {user, token}
 };
 
-module.exports = { signup, login}
+const post = async (parent, args, context) => {
+    const link = await context.prisma.link.create({
+        data: {
+            description: args.description,
+            url: args.url
+        }
+    });
+
+    return { link}
+}
+
+module.exports = { signup, login, post}
