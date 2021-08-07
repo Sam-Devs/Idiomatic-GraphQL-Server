@@ -1,6 +1,9 @@
+// const { PrismaClient } = require("@prisma/client");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { APP_SECRET, getUserId} = require("../src/utils");
+
+// const prisma = new PrismaClient();
 
 const signup = async (parent, args, context) => {
   const password = await bcrypt.hash(args.password, 10);
@@ -16,7 +19,6 @@ const signup = async (parent, args, context) => {
 
   return { user, token };
 };
-
 const login = async (parent, args, context, info) => {
   const user = await context.prisma.user.findUnique({
     where: { email: args.email },
